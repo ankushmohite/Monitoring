@@ -1,3 +1,7 @@
+## /root/monitoring/prometheus
+
+
+
 global:
   scrape_interval: 15s
 
@@ -23,3 +27,22 @@ scrape_configs:
     static_configs:
       - targets:
           - 13.235.79.28:9100
+
+
+########################################################################################
+
+docker run -d \
+  --name prometheus \
+  --network monitoring \
+  -p 9090:9090 \
+  -v ~/monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml \
+  -v ~/monitoring/rules/alert.rules.yml:/etc/prometheus/alert.rules.yml \
+  prom/prometheus
+
+  #######################################################################################
+
+  docker run -d \
+  --name grafana \
+  --network monitoring \
+  -p 3000:3000 \
+  grafana/grafana
