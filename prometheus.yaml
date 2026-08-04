@@ -39,10 +39,16 @@ docker run -d \
   -v ~/monitoring/rules/alert.rules.yml:/etc/prometheus/alert.rules.yml \
   prom/prometheus
 
-  #######################################################################################
+#######################################################################################
 
   docker run -d \
   --name grafana \
   --network monitoring \
   -p 3000:3000 \
   grafana/grafana
+
+###########################################################################################
+
+
+
+docker run -d   --name node-exporter   --restart always   -p 9100:9100   prom/node-exporter
