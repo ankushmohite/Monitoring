@@ -1,0 +1,15 @@
+global:
+  smtp_smarthost: 'smtp.gmail.com:587'
+  smtp_from: 'ankushmohite2014@gmail.com'
+  smtp_auth_username: 'ankushmohite2014@gmail.com'
+  smtp_auth_password: 'eaux gvst yayb mkco'
+  smtp_require_tls: true
+
+route:
+  receiver: gmail
+
+receivers:
+- name: gmail
+  email_configs:
+  - to: 'ankushmohite2014@gmail.com'
+    send_resolved: true
