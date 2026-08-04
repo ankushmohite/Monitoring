@@ -1,0 +1,31 @@
+groups:
+  - name: node-alerts
+
+    rules:
+
+      - alert: InstanceDown
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Instance Down"
+          description: "Node Exporter is Down."
+
+      - alert: HighMemoryUsage
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 50
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High Memory Usage"
+          description: "Memory utilization is above 50%."
+
+      - alert: HighDiskUsage
+        expr: (100 - ((node_filesystem_avail_bytes{fstype!~"tmpfs|overlay"} * 100) / node_filesystem_size_bytes{fstype!~"tmpfs|overlay"})) > 50
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High Disk Usage"
+          description: "Disk utilization is above 50%."
