@@ -1,3 +1,6 @@
+## /root/monitoring/alertmanager
+
+
 global:
   smtp_smarthost: 'smtp.gmail.com:587'
   smtp_from: 'ankushmohite2014@gmail.com'
@@ -13,3 +16,12 @@ receivers:
   email_configs:
   - to: 'ankushmohite2014@gmail.com'
     send_resolved: true
+
+#######################################################################################
+
+docker run -d \
+  --name alertmanager \
+  --network monitoring \
+  -p 9093:9093 \
+  -v ~/monitoring/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml \
+  prom/alertmanager
