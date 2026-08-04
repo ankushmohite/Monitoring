@@ -1,3 +1,6 @@
+## /root/monitoring/rules
+
+
 groups:
   - name: node-alerts
 
