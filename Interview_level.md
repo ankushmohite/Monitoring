@@ -2,7 +2,7 @@
 
 ## Step 1: Node Exporter
 
-Use to collects server metrics like CPU, Memory, Disk.
+Node Exporter is used to collect CPU, Memory, and Disk usage metrics from servers.
 
 ## Step 2: Prometheus
 
